@@ -19,6 +19,7 @@
 	BOOL _showBorder;
 	BOOL _showNativeButtons;
 	BOOL _showTitleLabel;
+    NSString * _fileName; // add by Stephen at 2020-09-01
 }
 
 @synthesize sign;
@@ -29,6 +30,7 @@
   _showBorder = YES;
 	_showNativeButtons = YES;
 	_showTitleLabel = YES;
+    _fileName = @"signature.png"; // add by Stephen at 2020-09-01
 	if ((self = [super init])) {
 		_border = [CAShapeLayer layer];
 		_border.strokeColor = [UIColor blackColor].CGColor;
@@ -178,6 +180,10 @@
 - (void)setShowTitleLabel:(BOOL)showTitleLabel {
 	_showTitleLabel = showTitleLabel;
 }
+// add by Stephen at 2020-09-01
+- (void)setFileName:(NSString *)fileName {
+    _fileName = fileName;
+}
 
 -(void) onSaveButtonPressed {
 	[self saveImage];
@@ -195,7 +201,10 @@
 
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths firstObject];
-	NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/signature.png"];
+    // moidfy by Stephen at 2020-09-01 start
+    NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"%@", [@"/" stringByAppendingString:_fileName]];
+    //    NSString *tempPath = [documentsDirectory stringByAppendingFormat:@"/signature.png"];
+    // moidfy by Stephen at 2020-09-01 end
 
 	//remove if file already exists
 	if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath]) {

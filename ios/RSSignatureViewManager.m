@@ -15,7 +15,7 @@ RCT_EXPORT_VIEW_PROPERTY(square, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showBorder, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showNativeButtons, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showTitleLabel, BOOL)
-
+RCT_EXPORT_VIEW_PROPERTY(fileName, NSString) // add by Stephen at 2020-09-01
 
 -(dispatch_queue_t) methodQueue
 {

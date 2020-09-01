@@ -41,6 +41,7 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
   Boolean showNativeButtons = true;
   Boolean showTitleLabel = true;
   int maxSize = 500;
+  String fileName = "signature.png"; // add by Stephen at 2020-09-01
 
   public RSSignatureCaptureMainView(Context context, Activity activity) {
     super(context);
@@ -91,6 +92,11 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
     this.maxSize = size;
   }
 
+  // add y Stephen at 2020-09-01 start
+  public void setFileName(String fileName){
+    this.fileName = fileName;
+  }
+  // add y Stephen at 2020-09-01 end
 
   private LinearLayout buttonsLayout() {
 
@@ -150,7 +156,10 @@ public class RSSignatureCaptureMainView extends LinearLayout implements OnClickL
     }
 
     // set the file name of your choice
-    String fname = "signature.png";
+    // modify by Stephen at 2020-09-01 start
+    String fname = this.fileName;
+    // String fname = "signature.png";
+    // modify by Stephen at 2020-09-01 end
 
     // in our case, we delete the previous file, you can remove this
     File file = new File(myDir, fname);
